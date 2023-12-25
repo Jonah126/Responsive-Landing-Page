@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #e6e6e6;
+        }
+
+        #navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #2c3e50; /* Dark Blue-Gray */
+            padding: 10px 0;
+            text-align: center;
+            transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+            z-index: 1000;
+        }
+
+        #navbar a {
+            color: #ecf0f1; /* Light Gray */
+            text-decoration: none;
+            padding: 14px 16px;
+            display: inline-block;
+            transition: color 0.3s ease-in-out;
+        }
+
+        #navbar a:hover {
+            color: #3498db; /* Blue */
+        }
+
+        #home, #about, #services, #contact {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        #home {
+            background-color: #3498db; /* Blue */
+            color: #ecf0f1; /* Light Gray */
+        }
+
+        #about {
+            background-color: #2ecc71; /* Green */
+            color: #333; /* Dark Gray */
+        }
+
+        #services {
+            background-color: #e74c3c; /* Red */
+            color: #ecf0f1; /* Light Gray */
+        }
+
+        #contact {
+            background-color: #f39c12; /* Orange */
+            color: #333; /* Dark Gray */
+        }
+
+        h1 {
+            color: inherit;
+        }
+
+        p {
+            color: #555;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+    </div>
+
+    <div id="home">
+        <h1>Welcome to Our Website</h1>
+        <p>This is the home section. Scroll down to explore more!</p>
+    </div>
+
+    <div id="about">
+        <h1>About Us</h1>
+        <p>We are a creative and dynamic team dedicated to delivering high-quality services.</p>
+    </div>
+
+    <div id="services">
+        <h1>Our Services</h1>
+        <p>We offer a variety of services to meet your needs. Explore our offerings below.</p>
+    </div>
+
+    <div id="contact">
+        <h1>Contact Us</h1>
+        <p>Feel free to get in touch with us. We would love to hear from you!</p>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var navbar = document.getElementById("navbar");
+            var menuItems = document.querySelectorAll("#navbar a");
+
+            // Smooth scroll to section
+            menuItems.forEach(function (menuItem) {
+                menuItem.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    var targetSection = document.querySelector(menuItem.getAttribute("href"));
+                    window.scrollTo({
+                        top: targetSection.offsetTop - navbar.clientHeight,
+                        behavior: "smooth"
+                    });
+                });
+            });
+
+            // Change style on scroll
+            window.addEventListener("scroll", function () {
+                if (window.scrollY > 50) {
+                    navbar.style.backgroundColor = "#23333d"; /* Darker Blue-Gray */
+                    navbar.style.color = "#ecf0f1";
+                } else {
+                    navbar.style.backgroundColor = "#2c3e50";
+                    navbar.style.color = "#ecf0f1";
+                }
+            });
+
+            // Reset style when not scrolling
+            window.addEventListener("scroll", function () {
+                if (window.scrollY === 0) {
+                    navbar.style.backgroundColor = "#2c3e50";
+                    navbar.style.color = "#ecf0f1";
+                }
+            });
+
+            // Change style on hover
+            menuItems.forEach(function (menuItem) {
+                menuItem.addEventListener("mouseover", function () {
+                    menuItem.style.color = "#3498db";
+                });
+
+                menuItem.addEventListener("mouseout", function () {
+                    menuItem.style.color = "#ecf0f1";
+                });
+            });
+        });
+    </script>
+</body>
+</html>
